@@ -30,6 +30,7 @@
 
                 // createToken returns immediately - the supplied callback submits the form if there are no errors
                   Stripe.createToken({
+                    name: $('.card-name').val(),
                     number: $('.card-number').val(),
                     cvc: $('.card-cvc').val(),
                     exp_month: $('.card-expiry-month').val(),
