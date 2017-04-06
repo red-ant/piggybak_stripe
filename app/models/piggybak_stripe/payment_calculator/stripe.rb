@@ -5,7 +5,7 @@ module PiggybakStripe
             'test_publishable_key', 
             'live_secret_key', 
             'live_publishable_key']
-    KLASS = ::Stripe
+    KLASS = ::PiggybakStripe::PaymentCalculator::Stripe
     
     def initialize(payment_method)
       @payment_method = payment_method

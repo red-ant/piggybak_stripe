@@ -6,7 +6,7 @@ module PiggybakStripe
     require 'stripe'
     
     config.to_prepare do
-      Piggybak::Payment.send(:include, ::PiggybakStripe::PaymentDecorator)
+      ::Piggybak::Payment.send(:include, ::PiggybakStripe::PaymentDecorator)
     end
     
     initializer "piggybak_realtime_shipping.add_calculators" do
@@ -14,6 +14,7 @@ module PiggybakStripe
         #Ensures that stripe is the only calculator because Piggybak
         #only supports one active calculator
         config.payment_calculators = ["::PiggybakStripe::PaymentCalculator::Stripe"]
+        config.additional_line_item_attributes = {:payment_attributes => [:stripe_token]}
       end
     end
   end
